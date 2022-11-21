@@ -12,10 +12,16 @@ const ButtonComponent = styled("div", {
     justifyContent: "center",
     alignItems: "center",
     color: props?.color ? props.color : "black",
-    border: props?.borderColor ? `5px solid ${props.borderColor}`: "",
     fontWeight: props?.fontWeight ? props.fontWeight : "400",
     fontSize: props?.fontSize ? props.fontSize : "3%",
     borderRadius: props?.borderRadius ? props.borderRadius : "3%",
+    border: props?.border ? `1px solid ${props.border}` : "",
+    transition: "all 0.3s ease-in-out",
+    "&:hover": {
+        backgroundColor: props?.hoverbackgroundColor ? props.hoverbackgroundColor : "none",
+        border: props?.hoverborder ? `1px solid ${props.hoverborder}` : "",
+        cursor: "pointer"
+    }
 }))
 // const Div = styled("div", {
 //     shouldForwardProp: (props) => ({ ...props }),
@@ -36,9 +42,11 @@ export const AppButton = ({
     textAlign,
     color,
     fontWeight,
-    borderColor,
     borderRadius,
-    fontSize
+    fontSize,
+    border,
+    hoverbackgroundColor,
+    hoverborder
 }) => {
     return <ButtonComponent
         height={height}
@@ -46,10 +54,12 @@ export const AppButton = ({
         backgroundColor={backgroundColor}
         textAlign={textAlign}
         color={color}
-        border={borderColor}
         fontWeight={fontWeight}
         borderRadius={borderRadius}
         fontSize={fontSize}
+        border={border}
+        hoverbackgroundColor={hoverbackgroundColor}
+        hoverborder={hoverborder}
     >
         {text}
     </ButtonComponent>
